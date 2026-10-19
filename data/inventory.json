@@ -1,0 +1,132 @@
+[
+  {
+    "product_id": "P001",
+    "name": "Organic Whole Milk (1 Gallon)",
+    "category": "Groceries",
+    "purchase_cost": 180.0,
+    "selling_price": 240.0,
+    "stock": 18,
+    "min_stock": 15,
+    "monthly_sales": 65
+  },
+  {
+    "product_id": "P002",
+    "name": "Arabica Coffee Beans (1 lb)",
+    "category": "Groceries",
+    "purchase_cost": 420.0,
+    "selling_price": 699.0,
+    "stock": 25,
+    "min_stock": 10,
+    "monthly_sales": 42
+  },
+  {
+    "product_id": "P003",
+    "name": "Artisan Sourdough Bread",
+    "category": "Groceries",
+    "purchase_cost": 65.0,
+    "selling_price": 120.0,
+    "stock": 0,
+    "min_stock": 12,
+    "monthly_sales": 38
+  },
+  {
+    "product_id": "P004",
+    "name": "Wireless Ergonomic Mouse",
+    "category": "Electronics",
+    "purchase_cost": 450.0,
+    "selling_price": 899.0,
+    "stock": 4,
+    "min_stock": 10,
+    "monthly_sales": 10
+  },
+  {
+    "product_id": "P005",
+    "name": "USB-C Fast Charger 65W",
+    "category": "Electronics",
+    "purchase_cost": 650.0,
+    "selling_price": 1299.0,
+    "stock": 35,
+    "min_stock": 12,
+    "monthly_sales": 55
+  },
+  {
+    "product_id": "P006",
+    "name": "Noise-Cancelling Headphones",
+    "category": "Electronics",
+    "purchase_cost": 2200.0,
+    "selling_price": 3999.0,
+    "stock": 22,
+    "min_stock": 6,
+    "monthly_sales": 3
+  },
+  {
+    "product_id": "P007",
+    "name": "Men's Cotton Crew T-Shirt",
+    "category": "Clothing",
+    "purchase_cost": 250.0,
+    "selling_price": 499.0,
+    "stock": 28,
+    "min_stock": 10,
+    "monthly_sales": 20
+  },
+  {
+    "product_id": "P008",
+    "name": "Vintage Denim Casual Jacket",
+    "category": "Clothing",
+    "purchase_cost": 1100.0,
+    "selling_price": 2199.0,
+    "stock": 19,
+    "min_stock": 5,
+    "monthly_sales": 2
+  },
+  {
+    "product_id": "P009",
+    "name": "Running Sports Socks (3-Pack)",
+    "category": "Clothing",
+    "purchase_cost": 120.0,
+    "selling_price": 299.0,
+    "stock": 40,
+    "min_stock": 15,
+    "monthly_sales": 35
+  },
+  {
+    "product_id": "P010",
+    "name": "Herbal Aloe Shampoo 500ml",
+    "category": "Personal Care",
+    "purchase_cost": 140.0,
+    "selling_price": 249.0,
+    "stock": 16,
+    "min_stock": 10,
+    "monthly_sales": 18
+  },
+  {
+    "product_id": "P011",
+    "name": "Electric Toothbrush Heads (4-Pack)",
+    "category": "Personal Care",
+    "purchase_cost": 350.0,
+    "selling_price": 749.0,
+    "stock": 3,
+    "min_stock": 8,
+    "monthly_sales": 22
+  },
+  {
+    "product_id": "P012",
+    "name": "Clearance Travel Sunscreen SPF 50",
+    "category": "Personal Care",
+    "purchase_cost": 299.0,
+    "selling_price": 199.0,
+    "stock": 14,
+    "min_stock": 5,
+    "monthly_sales": 6
+  },
+  {
+    "product_id": "P014",
+    "name": "Cow Ghee",
+    "category": "Groceries",
+    "purchase_cost": 100.0,
+    "selling_price": 130.0,
+    "stock": 80,
+    "min_stock": 3,
+    "monthly_sales": 30
+  }
+]

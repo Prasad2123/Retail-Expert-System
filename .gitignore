@@ -1,0 +1,26 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment
+.env
+.venv/
+env/
+venv/
+
+# IDE files
+.vscode/
+.idea/
+
+# Testing
+.pytest_cache/
+
+# OS generated
+Thumbs.db
+Desktop.ini
+
+# Dynamic generated reports
+reports/*.txt
+!reports/.gitkeep
+

@@ -1,75 +1,117 @@
 # Retail Expert System: A Rule-Based Intelligent Decision Support System
 
-An undergraduate Artificial Intelligence mini-project demonstrating **Knowledge Representation**, **Forward-Chaining Inference**, and **Transparent Decision Support** for retail shopkeepers using Python 3 and the `rich` terminal library.
+![Python Version](https://img.shields.io/badge/Python-3.10%2B-blue.svg)
+![UI Library](https://img.shields.io/badge/CLI_UI-Rich-cyan.svg)
+![AI Architecture](https://img.shields.io/badge/AI-Rule--Based%20Expert%20System-green.svg)
+![Tests](https://img.shields.io/badge/Tests-12%2F12%20Passing-brightgreen.svg)
+![Currency](https://img.shields.io/badge/Currency-INR%20(%E2%82%B9)-orange.svg)
+![License](https://img.shields.io/badge/License-MIT-lightgrey.svg)
+
+An interactive, offline Artificial Intelligence mini-project demonstrating **Knowledge Representation**, **Forward-Chaining Inference**, and **Transparent Decision Support** for retail shopkeepers using Python 3 and the `rich` terminal library.
 
 ---
 
-## 1. Project Title & Abstract
+## Table of Contents
 
-### Title
+- [1. Project Title and Introduction](#1-project-title-and-introduction)
+- [2. Abstract](#2-abstract)
+- [3. Problem Statement](#3-problem-statement)
+- [4. Project Objectives](#4-project-objectives)
+- [5. Key Features](#5-key-features)
+- [6. Technologies Used](#6-technologies-used)
+- [7. System Architecture](#7-system-architecture)
+- [8. Rule-Based Knowledge Base](#8-rule-based-knowledge-base)
+- [9. IF–THEN Rules Table](#9-ifthen-rules-table)
+- [10. Inference Engine and Forward-Chaining Process](#10-inference-engine-and-forward-chaining-process)
+- [11. Installation Instructions](#11-installation-instructions)
+- [12. How to Run the Application](#12-how-to-run-the-application)
+- [13. Application Menu and Sample Output](#13-application-menu-and-sample-output)
+- [14. Example Expert Analysis](#14-example-expert-analysis)
+- [15. Testing Instructions](#15-testing-instructions)
+- [16. Project Folder Structure](#16-project-folder-structure)
+- [17. Advantages](#17-advantages)
+- [18. Limitations](#18-limitations)
+- [19. Future Enhancements](#19-future-enhancements)
+- [20. Conclusion](#20-conclusion)
+
+---
+
+## 1. Project Title and Introduction
+
+### Project Title
 **Retail Expert System: A Rule-Based Intelligent Decision Support System**
 
-### Abstract
-Small and medium-sized retail businesses frequently struggle with stockouts, overstocking, tied-up working capital, and unintended loss-making pricing. While modern large enterprises employ complex predictive machine-learning pipelines, independent retailers require transparent, deterministic, and easily interpretable decision support that can operate completely offline without external cloud dependencies. 
+### Introduction
+The **Retail Expert System** is a terminal-based decision support system designed to assist independent shopkeepers and retail inventory managers. Built with clean, beginner-friendly Python 3 and the `rich` terminal UI library, the system models the reasoning of an experienced retail consultant. 
 
-This project implements a classical Artificial Intelligence **Rule-Based Expert System (RBES)** designed to assist retail store managers in making inventory replenishment, promotional discount, and pricing decisions. By structuring domain expertise into declarative **IF–THEN rules** and applying a **forward-chaining inference engine** with an integrated **explanation facility**, the system audits inventory health, calculates precise reorder quantities, enforces cost-floor constraints on promotions, and flags financial risks in real time.
-
----
-
-## 2. Problem Statement & Objectives
-
-### Problem Statement
-Retail managers must continuously track hundreds of stock-keeping units (SKUs) across multiple categories. In manual retail management:
-1. **Stockouts occur unnoticed**, leading to lost customer goodwill and forfeited revenue.
-2. **Capital gets locked** in slow-moving or obsolete inventory.
-3. **Discount decisions are arbitrary**, occasionally selling products below purchase cost and causing cash losses.
-4. **Calculations lack transparency**, as staff cannot easily explain why a specific reorder quantity or discount was chosen.
-
-### Objectives
-- Model retail business knowledge as formal declarative rules (Knowledge Base).
-- Implement an automated Forward-Chaining Inference Engine to evaluate inventory working memory.
-- Provide a Transparent Explanation Facility showing exact facts evaluated and rules triggered.
-- Enforce strict business constraints (e.g., promotional discounts must never fall below purchase cost).
-- Offer interactive decision support: inventory CRUD, product search, rule testing, customer product recommendations, and report export.
-- Deliver an interactive, professional Command-Line Interface (CLI) using the `rich` library.
+Rather than relying on opaque probabilistic black-box models, this application employs a classical, deterministic **Rule-Based Expert System (RBES)** architecture. It monitors inventory levels, identifies stockouts, estimates optimal replenishment quantities, recommends promotional discounts while strictly guarding cost floors, and audits profit margins—all displayed with structured visual formatting and full step-by-step reasoning transparency.
 
 ---
 
-## 3. Scope & Boundaries
+## 2. Abstract
 
-- **In Scope:**
-  - Deterministic IF–THEN rule evaluation.
-  - Forward chaining from facts to conclusions.
-  - Multi-category inventory management (Groceries, Electronics, Clothing, Personal Care).
-  - Financial risk detection (selling below cost, razor-thin margins).
-  - Reorder quantity estimation based on lead demand and safety stock formulas.
-  - Customer recommendation matching by budget and category.
-  - Local JSON persistence and timestamped text audit reports.
-- **Out of Scope (By Design):**
-  - Machine learning models, neural networks, or probabilistic black-box models.
-  - Cloud APIs, external web scrapers, or database servers.
-  - Graphical web/mobile frontends.
-  - Automatic purchasing or real-time payment gateway processing.
+Small and medium-scale retail operations often struggle with balancing inventory: holding too much stock locks up capital and risks product obsolescence, while holding too little leads to lost sales and dissatisfied customers. Furthermore, ad-hoc discounting strategies can inadvertently sell items below cost price, resulting in cash losses.
+
+This project implements an artificial intelligence decision support system founded on declarative knowledge representation and forward chaining. The system stores retail domain knowledge as structured **IF–THEN rules** and evaluates current stock facts in working memory. It flags low and zero-stock conditions, calculates precise reorder targets using safety stock formulas, identifies fast- and slow-moving items, and generates auditable recommendations. The entire workflow runs completely offline in any terminal, displaying all monetary amounts in **Indian Rupees (₹ / INR)**.
 
 ---
 
-## 4. Technologies Used
+## 3. Problem Statement
 
-| Technology | Purpose | Justification |
+Retail store managers face recurring operational challenges:
+
+1. **Unnoticed Stockouts**: Running out of critical stock-keeping units (SKUs) causes immediate revenue loss and pushes customers to competitors.
+2. **Capital Inefficiency**: Capital remains tied up in slow-moving merchandise that lingers on shelves for months.
+3. **Risky Discount Decisions**: Unstructured markdowns risk selling products below wholesale purchase cost.
+4. **Lack of Explainability**: Most modern analytics software functions as a black box, giving recommendations without stating *why* an action should be taken.
+5. **Connectivity and Cost Barriers**: Small retailers need offline solutions that do not incur cloud hosting fees or require internet connectivity.
+
+---
+
+## 4. Project Objectives
+
+- **Model Domain Knowledge**: Encode retail principles into modular, declarative IF–THEN rules.
+- **Implement Forward Chaining**: Develop an inference engine that evaluates product facts and infers actionable conclusions.
+- **Enforce Business Constraints**: Guarantee that suggested promotional discounts never fall below the purchase cost floor.
+- **Provide an Explanation Facility**: Enable shopkeepers and presentation evaluators to inspect the exact evaluated facts and rule premises behind any recommendation.
+- **Build an Attractive Terminal UI**: Use the `rich` library to deliver clean tables, colored status badges, and styled panels.
+- **Maintain Local Data Persistence**: Provide reliable JSON loading and saving with robust input validation.
+- **Support Indian Commerce**: Standardize all currency formatting, pricing, and budget filters in Indian Rupees (`₹`).
+
+---
+
+## 5. Key Features
+
+- **Interactive Terminal Dashboard**: Displays date, time, total products, out-of-stock count, low-stock warnings, and reorder alerts at a glance.
+- **Inventory Catalog Management**: Complete CRUD operations (Add, View, Search, Update Stock) with validation against negative prices and duplicate IDs.
+- **Forward-Chaining Rule Engine**: Automatically evaluates the entire inventory against 8 domain rules in order of priority.
+- **Priority-Ranked Recommendations**: Categorizes every suggestion into `HIGH`, `MEDIUM`, or `LOW` priority.
+- **Automated Reorder Quantity Math**: Calculates reorder batches based on target stock and monthly sales demand.
+- **Promotional Discount Advisor**: Proposes safe clearance discounts for slow-moving products while guaranteeing zero loss-making sales.
+- **Customer Product Recommender**: Interactive multi-attribute filtering by product category, budget ceiling (in ₹), and demand preferences.
+- **Custom Rule Tester (Explanation Facility)**: Test any rule interactively against active inventory items or custom hypothetical facts.
+- **Executive Retail Valuation**: Aggregates total inventory cost value, retail value, and potential gross profit in `₹`.
+- **Text Audit Report Exporter**: Exports timestamped, formatted analysis reports directly to disk.
+
+---
+
+## 6. Technologies Used
+
+| Technology | Role | Justification |
 | :--- | :--- | :--- |
-| **Python 3.10+** | Core Programming Language | Clean syntax, native standard library support, and beginner-friendly readability. |
-| **`rich` Library** | Terminal User Interface | Renders colorful tables, styled panels, status badges, and interactive prompts. |
-| **JSON** | Local Persistence | Human-readable, structured, lightweight, and offline storage for inventory facts. |
-| **Python Standard Library** | Architecture & Math | Modules used: `os`, `sys`, `json`, `datetime`, `typing`, `math`, `tempfile`. |
-| **`unittest`** | Automated Verification | Python's native test framework verifying all rules, edge cases, and mathematical models. |
+| **Python 3.10+** | Core Programming Language | Clean syntax, native standard library, and high cross-platform compatibility. |
+| **`rich` Library** | Terminal User Interface | Formats colorful tables, panels, status badges, and interactive prompts. |
+| **JSON** | Working Memory Persistence | Lightweight, human-readable, offline file storage without external database overhead. |
+| **`unittest`** | Verification Framework | Python's built-in testing tool used to validate all 12 operational scenarios. |
+| **Standard Library** | System Operations | Standard modules used: `sys`, `os`, `json`, `datetime`, `typing`, `math`, `tempfile`. |
 
 ---
 
-## 5. System Architecture
+## 7. System Architecture
 
-The project strictly follows the classical Artificial Intelligence Expert System paradigm:
+The project strictly follows the classical Artificial Intelligence Expert System architecture:
 
-```
+```text
 +-------------------------------------------------------------------------+
 |                              USER (Shopkeeper)                          |
 +-------------------------------------------------------------------------+
@@ -100,7 +142,7 @@ The project strictly follows the classical Artificial Intelligence Expert System
                                   | Rules & Constants
                +------------------------------------------------+
                |        KNOWLEDGE BASE (knowledge_base.py)      |
-               |  - Domain Thresholds & Formulas                |
+               |  - Domain Thresholds & Retail Formulas         |
                |  - Declarative Rules (RULE-01 to RULE-08)      |
                +------------------------------------------------+
                                   |
@@ -110,151 +152,152 @@ The project strictly follows the classical Artificial Intelligence Expert System
                     +---------------------------+
 ```
 
-### Components:
-1. **Knowledge Base (`knowledge_base.py`)**: Stores domain rules, thresholds (e.g., high-demand sales >= 30, slow-moving sales <= 5), and mathematical formulas.
-2. **Working Memory (`inventory.py`)**: Represents the current state of facts (product attributes, current stock, monthly sales, calculated margins).
-3. **Inference Engine (`inference_engine.py`)**: Forward chains from product facts, matches rule conditions, resolves priority conflicts, and infers recommendations.
-4. **Explanation Facility (`inference_engine.py` / `main.py`)**: Explains *why* a rule was satisfied by revealing the underlying mathematical conditions and factual inputs.
-5. **Recommendation & Strategy (`recommendations.py`)**: Multi-attribute filtering for customer recommendations and cost-constrained discount planning.
-6. **Report Generator (`reports.py`)**: Generates timestamped, readable audit files for store accounting.
+### Architectural Subsystems:
+1. **Knowledge Base (`knowledge_base.py`)**: Repository of domain thresholds, mathematical formulas, and declarative `Rule` instances.
+2. **Working Memory (`inventory.py`)**: In-memory representation of product facts loaded from `data/inventory.json`.
+3. **Inference Engine (`inference_engine.py`)**: Matches facts against rules, applies priority order, and instantiates `Recommendation` objects.
+4. **Explanation Facility (`inference_engine.py` / `main.py`)**: Audits why a rule condition succeeded or failed, providing full factual justification.
+5. **Report Generator (`reports.py`)**: Creates executive summaries and exports permanent text audit logs.
 
 ---
 
-## 6. Formal IF–THEN Rule Catalog
+## 8. Rule-Based Knowledge Base
 
-The expert system encodes 8 core retail rules:
+### Domain Thresholds
+- **High-Demand Sales Threshold**: `monthly_sales >= 30` units/month
+- **Slow-Moving Sales Threshold**: `monthly_sales <= 5` units/month
+- **Slow-Moving Inventory Level**: `stock >= 15` units (or `stock >= 2 * min_stock`)
+- **Promotional Clearance Discount**: `10.0%`
+- **Low Margin Warning Threshold**: `profit_margin < 15.0%`
+
+### Core Retail Formulas
+- **Target Stock Formula**:
+  `Target Stock = max(2 * Min Stock, Monthly Sales + Min Stock)`
+- **Reorder Quantity Formula**:
+  `Reorder Quantity = max(0, Target Stock - Current Stock)`
+- **Profit Per Unit**:
+  `Profit Per Unit = Selling Price - Purchase Cost`
+- **Profit Margin Percentage**:
+  `Profit Margin (%) = ((Selling Price - Purchase Cost) / Selling Price) * 100`  *(for Selling Price > 0)*
+- **Safe Promotional Discount**:
+  `Discounted Price = Selling Price * (1 - Discount% / 100)`
+  *Constraint:* `Discounted Price >= Purchase Cost`
+  `Max Safe Discount (%) = ((Selling Price - Purchase Cost) / Selling Price) * 100`
+
+---
+
+## 9. IF–THEN Rules Table
 
 | Rule ID | Rule Name | Formal IF Condition | Formal THEN Action | Priority |
 | :--- | :--- | :--- | :--- | :--- |
-| **RULE-01** | Low Stock Alert | `0 < stock <= min_stock` | Classify product as **LOW STOCK** and recommend replenishment. | `HIGH` |
-| **RULE-02** | Out-of-Stock Alert | `stock == 0` | Classify product as **OUT OF STOCK** and trigger immediate emergency purchase order (takes priority over Rule 1). | `HIGH` |
-| **RULE-03** | Reorder Recommendation | `stock <= min_stock AND monthly_sales > 0` | Calculate optimal reorder quantity: `max(0, Target Stock - Stock)` where `Target Stock = max(2*min_stock, monthly_sales + min_stock)`. | `HIGH` |
-| **RULE-04** | High-Demand Product | `monthly_sales >= 30` | Classify product as **HIGH DEMAND**; advise safety stock buffer and volume supplier discounts. | `MEDIUM` |
-| **RULE-05** | Slow-Moving Product | `monthly_sales <= 5 AND (stock >= 15 OR stock >= 2*min_stock)` | Classify product as **SLOW MOVING**; warn of tied-up capital and suggest promotional review. | `MEDIUM` |
-| **RULE-06** | Discount Recommendation | `is_slow_moving AND selling_price > purchase_cost` | Recommend up to 10% clearance discount, strictly capped such that `discounted_price >= purchase_cost`. | `MEDIUM` |
-| **RULE-07** | Profit Margin Analysis | `selling_price < purchase_cost OR profit_margin < 15%` | Flag pricing risk: if selling below cost, immediately recommend price increase to break-even or 20% margin. | `HIGH` / `LOW` |
-| **RULE-08** | Performance Classification | Multi-attribute evaluation of sales, stock, and margins | Classify product as `HIGH PERFORMING`, `NORMAL`, or `NEEDS REVIEW`. | `LOW` |
+| **RULE-01** | Low Stock Alert | `0 < stock <= min_stock` | Classify as **LOW STOCK**; recommend restocking to target stock level. | `HIGH` |
+| **RULE-02** | Out-of-Stock Alert | `stock == 0` | Classify as **OUT OF STOCK**; trigger emergency reorder (takes priority over Rule 1). | `HIGH` |
+| **RULE-03** | Reorder Recommendation | `stock <= min_stock AND monthly_sales > 0` | Compute reorder quantity: `max(0, Target Stock - Current Stock)`. | `HIGH` |
+| **RULE-04** | High-Demand Product | `monthly_sales >= 30` | Classify as **HIGH DEMAND**; maintain safety stock and negotiate supplier volume terms. | `MEDIUM` |
+| **RULE-05** | Slow-Moving Product | `monthly_sales <= 5 AND (stock >= 15 OR stock >= 2*min_stock)` | Classify as **SLOW MOVING**; warn of stagnant capital and advise promotional bundling. | `MEDIUM` |
+| **RULE-06** | Discount Recommendation | `is_slow_moving AND selling_price > purchase_cost` | Propose up to 10% clearance discount, capped to ensure price never drops below cost. | `MEDIUM` |
+| **RULE-07** | Profit Margin Analysis | `selling_price < purchase_cost OR profit_margin < 15%` | Flag pricing risk: if selling below cost, immediately advise raising price to at least cost or 20% margin. | `HIGH` / `LOW` |
+| **RULE-08** | Performance Classification | Multi-attribute evaluation | Classify product performance as `HIGH PERFORMING`, `NORMAL`, or `NEEDS REVIEW`. | `LOW` |
 
 ---
 
-## 7. Algorithms & Mathematical Formulas
+## 10. Inference Engine and Forward-Chaining Process
 
-### Forward-Chaining Inference Algorithm (Pseudocode)
+The system uses a **data-driven forward-chaining cycle**:
+
+```text
+[ Current Facts in Working Memory ]
+                │
+                ▼
+[ Evaluate Rule Condition Premises in Priority Order ]
+                │
+                ├─► Condition TRUE  ──► Fire Rule Action ──► Add Recommendation to Agenda
+                │
+                └─► Condition FALSE ──► Rule Does Not Fire
+                │
+                ▼
+[ Conflict Resolution: Rule 2 Precedes Rule 1 for Zero Stock ]
+                │
+                ▼
+[ Sort Inferred Recommendations by Priority: HIGH ──► MEDIUM ──► LOW ]
+```
+
+### Forward Chaining Pseudocode
 
 ```python
-# Forward Chaining Algorithm for Retail Decision Support
-function EVALUATE_INVENTORY(WorkingMemory, KnowledgeBase):
-    Recommendations = []
-
-    for each Product in WorkingMemory:
-        # Step 1: Compute derived facts
-        Facts = ExtractFacts(Product)
-        Facts['profit'] = Facts['selling_price'] - Facts['purchase_cost']
-        Facts['margin'] = (Facts['profit'] / Facts['selling_price']) * 100
-
-        # Step 2: Forward Match against Knowledge Base Rules
-        for each Rule in KnowledgeBase.Rules:
-            Satisfied, Details = Rule.Evaluate(Facts)
-            if Satisfied:
-                # Step 3: Conflict Resolution & Rule Precedence
-                if Rule.ID == 'RULE-01' and Facts['stock'] == 0:
-                    continue  # Rule 2 handles zero stock
+def evaluate_inventory(working_memory, knowledge_base):
+    recommendations = []
+    
+    for product in working_memory:
+        facts = extract_and_derive_facts(product)
+        
+        for rule in knowledge_base.get_rules():
+            satisfied, details = rule.evaluate(facts)
+            
+            if satisfied:
+                # Rule precedence conflict resolution:
+                if rule.rule_id == "RULE-01" and facts["stock"] == 0:
+                    continue  # Handled exclusively by RULE-02
                 
-                # Step 4: Add inferred action to working agenda
-                Rec = CreateRecommendation(Product, Rule, Details)
-                Recommendations.Append(Rec)
-
-    # Step 5: Prioritize Recommendations (HIGH -> MEDIUM -> LOW)
-    SortByPriority(Recommendations)
-    return Recommendations
-```
-
-### Core Mathematical Formulas
-
-1. **Target Stock Formula:**
-   $$\text{Target Stock} = \max(2 \times \text{Min Stock},\ \text{Monthly Sales} + \text{Min Stock})$$
-
-2. **Reorder Quantity Formula:**
-   $$\text{Reorder Quantity} = \max(0,\ \text{Target Stock} - \text{Current Stock})$$
-
-3. **Profit Per Unit:**
-   $$\text{Profit} = \text{Selling Price} - \text{Purchase Cost}$$
-
-4. **Profit Margin Percentage:**
-   $$\text{Margin } (\%) = \left(\frac{\text{Selling Price} - \text{Purchase Cost}}{\text{Selling Price}}\right) \times 100 \quad (\text{for Selling Price} > 0)$$
-
-5. **Safe Promotional Discount Constraint:**
-   $$\text{Discounted Price} = \text{Selling Price} \times \left(1 - \frac{\text{Discount } \%}{100}\right)$$
-   $$\text{Condition: } \text{Discounted Price} \ge \text{Purchase Cost}$$
-   $$\text{Max Safe Discount } (\%) = \left(\frac{\text{Selling Price} - \text{Purchase Cost}}{\text{Selling Price}}\right) \times 100$$
-
----
-
-## 8. Project Structure
-
-```
-Retail Expert System/
-│
-├── main.py                     # Entry point & interactive Rich terminal interface
-├── inventory.py                # Working memory facts, JSON CRUD, and validation
-├── knowledge_base.py           # Knowledge base: business constants, formulas, and rules
-├── inference_engine.py         # Forward-chaining engine & explanation facility
-├── recommendations.py          # Category/budget recommendation & discount strategy
-├── reports.py                  # Retail analytics summary & text audit report exporter
-│
-├── data/
-│   └── inventory.json          # Persistent JSON inventory data (12 sample products)
-│
-├── reports/
-│   └── .gitkeep                # Directory for generated timestamped analysis reports
-│
-├── tests/
-│   ├── __init__.py             # Test package marker
-│   └── test_expert_system.py   # Comprehensive 12-scenario unit test suite
-│
-├── requirements.txt            # Python dependencies (rich)
-└── README.md                   # Complete academic documentation & presentation guide
+                rec = Recommendation(
+                    product_id=facts["product_id"],
+                    product_name=facts["name"],
+                    condition=details["condition"],
+                    rule_id=rule.rule_id,
+                    rule_name=rule.name,
+                    reason=details["reason"],
+                    recommendation=details["recommendation"],
+                    priority=details["priority"]
+                )
+                recommendations.append(rec)
+                
+    sort_by_priority(recommendations, order=["HIGH", "MEDIUM", "LOW"])
+    return recommendations
 ```
 
 ---
 
-## 9. Installation & Execution Guide
+## 11. Installation Instructions
 
 ### Prerequisites
-- Python 3.10 or higher.
-- Windows Command Prompt, Windows PowerShell, Linux Terminal, or macOS Terminal.
+- Python 3.10, 3.11, 3.12, 3.13, or 3.14 installed on your system.
+- Git (optional, for cloning).
 
-### Step 1: Clone or Navigate to the Workspace
+### Step 1: Clone or Download the Repository
 ```bash
-cd "D:\Retail Expert System"
+git clone https://github.com/Prasad2123/Retail-Expert-System.git
+cd Retail-Expert-System
 ```
 
 ### Step 2: Install Dependencies
+Install the required `rich` library:
 ```bash
 pip install -r requirements.txt
 ```
 
-### Step 3: Run the Application
+---
+
+## 12. How to Run the Application
+
+Launch the application directly from the repository root:
+
 ```bash
 python main.py
 ```
 
-### Step 4: Run Automated Unit Tests
-```bash
-python -m unittest discover -s tests -v
-```
+The application runs inside Windows Command Prompt (`cmd.exe`), Windows PowerShell, macOS Terminal, Linux Bash, or the integrated terminal in VS Code.
 
 ---
 
-## 10. Sample Terminal Output
+## 13. Application Menu and Sample Output
 
-### Main Dashboard Screen
+### Main Dashboard
 ```text
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║                       ★ STORE INTELLIGENCE CONSOLE ★                         ║
 ║                            RETAIL EXPERT SYSTEM                              ║
 ║              Rule-Based AI Intelligent Decision Support System               ║
-║              Current Time: Monday, Oct 19, 2026 | 06:45 AM                   ║
+║              Current Time: Monday, Oct 19, 2026 | 07:30 AM                   ║
 ║                     Forward-Chaining Inference Engine                        ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
 
@@ -277,7 +320,26 @@ python -m unittest discover -s tests -v
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ```
 
-### Expert Analysis Trace Example (Low Stock)
+---
+
+## 14. Example Expert Analysis
+
+When selecting **Option [5] (Run Expert Analysis)**, the inference engine evaluates all products and renders formatted recommendation cards:
+
+### Case 1: Out of Stock Alert (`RULE-02` & `RULE-03`)
+```text
+╭────────────────── [ PRIORITY: HIGH ] Recommendation #01 ─────────────────────╮
+│ Artisan Sourdough Bread (ID: P003)                                           │
+│ • Condition Triggered : OUT OF STOCK                                         │
+│ • Rule Fired          : RULE-02 - Out-of-Stock Alert                         │
+│ • Inference Reason    : Available stock is completely depleted (0 units).    │
+│                         Immediate stockout in progress.                      │
+│ • Expert Action       : Place urgent purchase order for at least 50 units to │
+│                         restore inventory to 50 units.                       │
+╰──────────────────────────────────────────────────────────────────────────────╯
+```
+
+### Case 2: Low Stock Replenishment (`RULE-01` & `RULE-03`)
 ```text
 ╭────────────────── [ PRIORITY: HIGH ] Recommendation #04 ─────────────────────╮
 │ Wireless Ergonomic Mouse (ID: P004)                                          │
@@ -289,7 +351,7 @@ python -m unittest discover -s tests -v
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ```
 
-### Expert Analysis Trace Example (Loss-Making Product & Discount Recommendation)
+### Case 3: Sold Below Cost Financial Anomaly (`RULE-07`)
 ```text
 ╭────────────────── [ PRIORITY: HIGH ] Recommendation #10 ─────────────────────╮
 │ Clearance Travel Sunscreen SPF 50 (ID: P012)                                 │
@@ -302,7 +364,10 @@ python -m unittest discover -s tests -v
 │                         (break-even) or ₹373.75 to achieve a healthy 20%     │
 │                         margin.                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
+```
 
+### Case 4: Cost-Guarded Promotional Discount (`RULE-06`)
+```text
 ╭───────────────── [ PRIORITY: MEDIUM ] Recommendation #17 ────────────────────╮
 │ Noise-Cancelling Headphones (ID: P006)                                       │
 │ • Condition Triggered : PROMOTIONAL DISCOUNT RECOMMENDED                     │
@@ -315,117 +380,91 @@ python -m unittest discover -s tests -v
 ╰──────────────────────────────────────────────────────────────────────────────╯
 ```
 
-### Explanation Facility Audit Output (Option [7])
-```text
-╭─────────────────────── Rule Inference Audit: RULE-01 ────────────────────────╮
-│ Rule Evaluated : RULE-01 - Low Stock Alert                                   │
-│ Formal IF Rule : IF 0 < available_stock <= minimum_stock_threshold           │
-│ THEN Action    : THEN classify product as LOW STOCK and recommend            │
-│                  replenishment.                                              │
-│                                                                              │
-│ Evaluated Facts:                                                             │
-│ Current stock: 4, Minimum stock threshold: 10                                │
-│                                                                              │
-│ Condition Status: [ YES - CONDITION SATISFIED ]                              │
-│ Reason / Justification:                                                      │
-│ Current stock (4) is below the minimum threshold (10).                       │
-│                                                                              │
-│ Generated Action / Recommendation:                                           │
-│ Replenish at least 16 units to reach the target stock level (20 units).      │
-╰──────────────────────────────────────────────────────────────────────────────╯
-```
-
 ---
 
-## 11. Testing & Verification
+## 15. Testing Instructions
 
-The project includes an automated test suite in [tests/test_expert_system.py](file:///d:/Retail%20Expert%20System/tests/test_expert_system.py) covering 12 critical verification scenarios:
+The repository includes a comprehensive unit test suite in `tests/test_expert_system.py` using Python's built-in `unittest` module.
 
+### Run Tests
 ```bash
 python -m unittest discover -s tests -v
 ```
 
+### Test Coverage Summary
+- `test_01_out_of_stock_detection`: Verifies `stock == 0` fires `RULE-02` and suppresses `RULE-01`.
+- `test_02_low_stock_detection`: Verifies `0 < stock <= min_stock` fires `RULE-01`.
+- `test_03_reorder_quantity_calculation`: Verifies target stock and reorder quantity mathematics.
+- `test_04_high_demand_classification`: Verifies high sales trigger `RULE-04`.
+- `test_05_slow_moving_classification`: Verifies low sales and high stock trigger `RULE-05`.
+- `test_06_discount_recommendation_respects_cost`: Verifies discounts never reduce price below cost.
+- `test_07_profit_margin_calculation`: Verifies profit per unit, margin percentages, and safe division by zero.
+- `test_08_invalid_inventory_data_handling`: Verifies rejection of negative numbers and duplicate IDs.
+- `test_09_rule_explanation_facility`: Verifies transparent rule audit generation.
+- `test_10_product_recommendation_filtering`: Verifies multi-attribute filtering by category and budget.
+- `test_11_performance_classification`: Verifies classification into `HIGH PERFORMING`, `NORMAL`, and `NEEDS REVIEW`.
+- `test_12_json_persistence`: Verifies safe read/write operations using temporary test files.
+
+All 12 tests pass cleanly in under 0.05 seconds.
+
+---
+
+## 16. Project Folder Structure
+
 ```text
-test_01_out_of_stock_detection ... ok
-test_02_low_stock_detection ... ok
-test_03_reorder_quantity_calculation ... ok
-test_04_high_demand_classification ... ok
-test_05_slow_moving_classification ... ok
-test_06_discount_recommendation_respects_cost ... ok
-test_07_profit_margin_calculation ... ok
-test_08_invalid_inventory_data_handling ... ok
-test_09_rule_explanation_facility ... ok
-test_10_product_recommendation_filtering ... ok
-test_11_performance_classification ... ok
-test_12_json_persistence ... ok
-
-----------------------------------------------------------------------
-Ran 12 tests in 0.027s
-
-OK
+Retail-Expert-System/
+├── .gitignore                  # Git ignore rules for Python bytecode and caches
+├── requirements.txt            # Python dependencies (rich)
+├── README.md                   # Comprehensive project documentation
+├── main.py                     # CLI entry point, ASCII dashboard, and menus
+├── inventory.py                # Working memory, JSON persistence, and validation
+├── knowledge_base.py           # Declarative rules (RULE-01 to 08), constants, and formulas
+├── inference_engine.py         # Forward-chaining engine and AI explanation facility
+├── recommendations.py          # Category/budget advisor and discount calculations
+├── reports.py                  # Inventory analytics summary and text report exporter
+│
+├── data/
+│   └── inventory.json          # Persistent catalog of 12 sample products in INR (₹)
+│
+├── reports/
+│   ├── .gitkeep                # Directory marker for exported reports
+│   └── expert_analysis_*.txt   # Generated timestamped audit reports
+│
+└── tests/
+    ├── __init__.py             # Test package marker
+    └── test_expert_system.py   # Complete 12-scenario test suite
 ```
 
-All tests operate on isolated in-memory or temporary files to ensure active product data is never contaminated during automated testing.
+---
+
+## 17. Advantages
+
+- **100% Deterministic & Traceable**: Every decision traces back to a specific, auditable IF–THEN rule.
+- **Guaranteed Cost-Floor Safety**: Prohibits clearance discounts that would sell items below wholesale cost.
+- **Completely Offline**: Requires no cloud services, API tokens, or external network connectivity.
+- **Zero Hallucinations**: Eliminates the unpredictability and false facts common in generative AI models.
+- **Lightweight & Fast**: Executes complete inventory evaluations in milliseconds.
+- **Native Indian Rupee Support**: Built specifically with `₹` currency formatting and sensible Indian retail price points.
 
 ---
 
-## 12. College Project Viva & 3–5 Minute Presentation Guide
+## 18. Limitations
 
-If demonstrating this project for a faculty evaluation or mini-project viva, follow this structured walkthrough:
-
-### Minute 1: Introduction & Architecture (30–60 seconds)
-- State the title: *"Retail Expert System: A Rule-Based Intelligent Decision Support System"*.
-- Explain the motivation: Small shopkeepers need transparent, deterministic decision support in Indian Rupees (₹) rather than opaque black-box machine learning.
-- Highlight the **AI Architecture**: **Knowledge Base** (declarative rules), **Working Memory** (inventory facts), **Inference Engine** (forward chaining), and **Explanation Facility** (rule auditing).
-
-### Minute 2: Running the System & Live Inventory (60 seconds)
-- Launch the application: `python main.py`.
-- Select **Option [1]** to display the colorful catalog of 12 realistic retail products with prices in Indian Rupees (₹) spanning Groceries, Electronics, Clothing, and Personal Care.
-- Point out the status badges: **IN STOCK** (green), **LOW STOCK** (yellow), and **OUT OF STOCK** (red).
-
-### Minute 3: Running Expert Analysis & Forward Chaining (60 seconds)
-- Select **Option [5] (Run Expert Analysis)**.
-- Demonstrate how the inference engine evaluates all rules forward from product facts.
-- Highlight three specific recommendations:
-  1. **Stockout (P003 Artisan Bread)**: Handled by `RULE-02` taking priority over `RULE-01`.
-  2. **Low Stock (P004 Wireless Mouse)**: `RULE-01` and `RULE-03` calculate exact reorder of 16 units using $\text{Target Stock} - \text{Current Stock}$.
-  3. **Loss-Making Risk (P012 Travel Sunscreen)**: `RULE-07` flags a negative margin item selling at ₹199.00 with purchase cost of ₹299.00.
-- Show the option to export the timestamped text audit report to `reports/`.
-
-### Minute 4: Demonstrating the AI Explanation Facility (60 seconds)
-- Select **Option [7] (Test a Rule)**.
-- Choose **RULE-06 (Discount Recommendation)**.
-- Show that the system verifies whether a 10% discount would cause the product to sell below its purchase cost floor in ₹.
-- Switch to manual mode: enter custom stock and sales to prove that the rule engine dynamically derives the correct conclusion with a full transparency trace.
-
-### Minute 5: Automated Testing & Conclusion (30 seconds)
-- Exit to the shell and run `python -m unittest discover -s tests -v`.
-- Show that all 12 test suites pass with 100% test coverage.
-- Conclude: *"This project demonstrates a production-grade, transparent expert system adhering strictly to classical AI knowledge engineering principles configured for Indian retail commerce."*
+- **Static Rule Base**: The knowledge base does not automatically discover or derive new rules from raw transaction logs.
+- **Independent SKU Modeling**: Rules evaluate each product independently without modeling cross-product purchase affinities (e.g., bread and butter bundled together).
+- **Single-Location Scope**: Designed for a single storefront rather than distributed multi-warehouse supply chains.
 
 ---
 
-## 13. Strengths, Limitations, and Future Enhancements
+## 19. Future Enhancements
 
-### Strengths
-- **100% Deterministic & Traceable:** Every piece of advice is linked to a concrete IF–THEN rule.
-- **Cost-Floor Safety:** Guaranteed financial safety against selling at a loss during clearance promotions.
-- **Completely Offline:** Runs without internet access, external API keys, or heavy model weights.
-- **Zero Hallucination:** Eliminates probabilistic guessing present in Large Language Models.
-
-### Limitations
-- **Fixed Rule Base:** Does not automatically learn new retail rules from historical big data.
-- **Independent SKU Evaluation:** Does not currently model cross-product cannibalization or market basket affinity (e.g., buying milk and bread together).
-
-### Future Enhancements
-- Integration of **Backward Chaining** for diagnostic goal analysis (e.g., *"Why did net profit fall by 12% this month?"*).
-- Support for **Fuzzy Logic** to model gradual transitions between "low stock" and "adequate stock".
-- Barcode scanner integration via USB serial emulation.
+- **Backward-Chaining Diagnostic Facility**: Implement goal-driven reasoning (e.g., *"Why did net profit fall by 15% this quarter?"*).
+- **Fuzzy Logic Membership**: Introduce fuzzy sets to smoothly categorize items between "borderline stock" and "adequate stock".
+- **Hardware Barcode Integration**: Connect with USB/Bluetooth handheld barcode scanners for real-time checkout updates.
+- **Seasonal Demand Coefficients**: Include seasonal weighting factors for festival and holiday demand surges.
 
 ---
 
-## 14. Academic Declaration
+## 20. Conclusion
 
-This project is an original software engineering and artificial intelligence implementation developed for educational assessment. All business rules, formulas, and software modules have been implemented cleanly with comprehensive comments and documentation.
-#   R e t a i l - E x p e r t - S y s t e m  
- 
+The **Retail Expert System** successfully demonstrates the core principles of Artificial Intelligence knowledge engineering. By decoupling the **Knowledge Base** from the **Inference Engine** and backing every conclusion with a transparent **Explanation Facility**, the application provides practical, reliable decision support for retail store owners. The project meets all academic requirements for an undergraduate AI mini-project, offering robust test coverage, professional terminal aesthetics, and strict mathematical data integrity.
